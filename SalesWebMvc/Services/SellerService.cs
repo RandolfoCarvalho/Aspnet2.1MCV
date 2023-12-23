@@ -8,14 +8,22 @@ namespace SalesWebMvc.Services
     {
         private readonly SalesWebMvcContext _context;
 
+        //Meu Bd no contexto atual
         public SellerService(SalesWebMvcContext context)
         {
             _context = context;
         }
 
+        //consultando todos os vendedores
         public List<Seller> FindAll()
         {
             return _context.Seller.ToList();
+        }
+        //Inserindo um novo vendedor no Bd
+        public void Insert(Seller obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
         }
     }
 }
