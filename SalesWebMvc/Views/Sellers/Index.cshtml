@@ -49,6 +49,8 @@
                     @Html.DisplayFor(modelItem => item.baseSalary);
                 </td>
                 <td>
+                    @*Passa o Id do vendedor que eu clica no asp-route-id*@
+                    @*Quando algum desses for clicado vai acionar o método do controlador*@
                     <a asp-action="Edit" asp-route-id="@item.Id"> Edit </a>
                     <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
                     <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
