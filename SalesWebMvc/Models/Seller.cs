@@ -12,6 +12,7 @@ namespace SalesWebMvc.Models
         public DateTime birthDate { get; set; }
         public double baseSalary { get; set; }
         public Department Department { get; set; }
+        public int DepartmentId { get; set; }
         //ou seja, o que esse ICollection esta fazendo é uma associação 1 para N 
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 

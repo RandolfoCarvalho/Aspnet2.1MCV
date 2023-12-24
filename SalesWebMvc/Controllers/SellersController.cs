@@ -15,6 +15,7 @@ namespace SalesWebMvc.Controllers
 
         public IActionResult Index()
         {
+            //pega os registros do banco e retorna isso para view
             var list = _sellerService.FindAll();
             return View(list);
         }
