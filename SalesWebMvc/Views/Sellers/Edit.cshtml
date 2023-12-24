@@ -19,24 +19,28 @@
                 @*Aqui mesmo já esta preenchendo o atributo do tipo Seller do SellerFormViewModel*@
                 <label asp-for="Seller.Name" class="control-label"></label>
                 <input asp-for="Seller.Name" class="form-control" />
+                <span asp-validation-for="Seller.Name" class="text-danger"></span>
 
             </div>
             <div class="form-group">
                 @**@
                 <label asp-for="Seller.email" class="control-label"></label>
                 <input asp-for="Seller.email" class="form-control" />
+                <span asp-validation-for="Seller.email" class="text-danger"></span>
 
             </div>
             <div class="form-group">
                 @**@
                 <label asp-for="Seller.birthDate" class="control-label"></label>
                 <input asp-for="Seller.birthDate" class="form-control" />
+                <span asp-validation-for="Seller.birthDate" class="text-danger"></span>
 
             </div>
             <div class="form-group">
                 @**@
                 <label asp-for="Seller.baseSalary" class="control-label"></label>
                 <input asp-for="Seller.baseSalary" class="form-control" />
+                <span asp-validation-for="Seller.baseSalary" class="text-danger"></span>
 
             </div>
             <div class="form-group">
@@ -50,5 +54,9 @@
         </form>
     </div>
 </div>
-
-
+@*Para a validacao acontecer no nivel de javascript*@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
