@@ -43,3 +43,4 @@ C:\temp\projetos\PrimeiroProjeto\Crud - aspnet\novo\SallesWebApp\workshop-asp-ne
 C:\temp\projetos\PrimeiroProjeto\Crud - aspnet\novo\SallesWebApp\workshop-asp-net-core-mvc\SalesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Sellers\Create.cshtml.g.cs
 C:\temp\projetos\PrimeiroProjeto\Crud - aspnet\novo\SallesWebApp\workshop-asp-net-core-mvc\SalesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Sellers\Delete.cshtml.g.cs
 C:\temp\projetos\PrimeiroProjeto\Crud - aspnet\novo\SallesWebApp\workshop-asp-net-core-mvc\SalesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Sellers\Details.cshtml.g.cs
+C:\temp\projetos\PrimeiroProjeto\Crud - aspnet\novo\SallesWebApp\workshop-asp-net-core-mvc\SalesWebMvc\obj\Debug\netcoreapp2.1\Razor\Views\Sellers\Edit.cshtml.g.cs
