@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMvc.Services
 {
@@ -29,7 +30,9 @@ namespace SalesWebMvc.Services
         }
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            //da um join para buscar também o departamento pelo Id
+            //isso é chamado de eager loading, carregar outros objetos associados ao obj principal, que no caso o principal é o Seller
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
         public void Remove(int id)
         {
