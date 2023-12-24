@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using SalesWebMvc.Data;
 using SalesWebMvc.Services;
+
+
 namespace SalesWebMvc
 {
     public class Startup
@@ -33,8 +35,6 @@ namespace SalesWebMvc
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //sempre que for usar um banco de dados diferente é necessário o provider do mesmo
             services.AddDbContext<SalesWebMvcContext>(options =>
@@ -45,10 +45,8 @@ namespace SalesWebMvc
             //registra nosso servico no sistema de injeção de dependencia da minha app
             services.AddScoped<SeedingService>();
             services.AddScoped<SellerService>();
-
-
+            services.AddScoped<DepartmentService>();
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
