@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Services.Exceptions;
+using System.Threading.Tasks;
 
 namespace SalesWebMvc.Services
 {
@@ -18,34 +19,35 @@ namespace SalesWebMvc.Services
         }
 
         //consultando todos os vendedores
-        public List<Seller> FindAll()
+        public async Task<List<Seller>> FindAllAsync()
         {
             //retorna uma lista de objetos do tipo Seller
-            return _context.Seller.ToList();
+            return await _context.Seller.ToListAsync();
         }
         //Inserindo um novo vendedor no Bd
-        public void Insert(Seller obj)
+        public async Task InsertAsync(Seller obj)
         {
             _context.Add(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
-        public Seller FindById(int id)
+        public async Task<Seller> FindByIdAsync(int id)
         {
             //da um join para buscar também o departamento pelo Id
             //isso é chamado de eager loading, carregar outros objetos associados ao obj principal, que no caso o princial 
-            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
+            return await _context.Seller.Include(obj => obj.Department).FirstOrDefaultAsync(obj => obj.Id == id);
         }
-        public void remove(int id)
+        public async Task removeAsync(int id)
         {
-            var obj = _context.Seller.Find(id);
+            var obj = await _context.Seller.FindAsync(id);
             _context.Seller.Remove(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Seller obj)
+        public async Task UpdateAsync(Seller obj)
         {
+            bool hasAny = await _context.Seller.AnyAsync(x => x.Id == obj.Id);
             //verifica no banco de dados se já existe algum Id desse obj x no banco de dados
-            if (!_context.Seller.Any(x => x.Id == obj.Id))
+            if (!hasAny)
             {
                 throw new KeyNotFoundException("Id not Found");
             }
@@ -53,7 +55,7 @@ namespace SalesWebMvc.Services
             try
             {
                 _context.Update(obj);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
             } catch(DbUpdateConcurrencyException e)
             {
